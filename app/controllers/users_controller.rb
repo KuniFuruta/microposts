@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-
+  before_action :set_params, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:edit, :update]
+  
   def show 
-   @user = User.find(params[:id])
   end
 
   def new
@@ -19,23 +20,32 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-    render :layout => 'users'
   end
 
-def update
-    if @user.update_attributes(user_params)
+  def update
+    if @user.update(user_params)
+      flash[:success] = "Updated your Plofile"
       redirect_to @user
-      flash[:success] = "プロフィールを更新しました" 
     else
-      render'edit'
+      render 'edit'
     end
-end
+  end
 
   private
 
   def user_params
     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+                                 :password_confirmation, 
+                                 :language, :region)
+                                 #ここに追加カラム名を入れる
   end
+  
+  def set_params
+    @user = User.find(params[:id])
+  end
+  
+  def correct_user
+    redirect_to root_path if @user != current_user
+  end
+  
 end
