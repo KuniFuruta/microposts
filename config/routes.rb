@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get    'edit' , to: 'sessions#edit'
 
   resources :microposts
+  resources :relationships, only: [:create, :destroy]
 end
