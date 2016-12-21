@@ -13,5 +13,15 @@
       <li>region：　<%= @user.region%></li>
     </ul>
   </aside>
+  
+    <div class="col-md-8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+    <% end %>
+  </div>
 </div>
+
 

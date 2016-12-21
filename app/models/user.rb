@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
   validates :language, allow_blank: true, length: { minimum: 2, maximum: 50 }
   validates :region, allow_blank: true, length: { minimum: 2, maximum: 50 } 
   #ここにバリデーション
+  has_many :microposts
 end
