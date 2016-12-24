@@ -3,7 +3,7 @@
     <% render 'user_info' %>
   </aside>
   <div class="col-md-8">
-      <h3>@title (<%= @users.count %>)</h3>
+      <h3><%= @title %> (<%= @users.count %>)</h3>
       <ol class="users">
         <% @users.each do |user| %>
           <li><%= link_to user.name, user %></li>

@@ -15,8 +15,10 @@
   </div>
     
   <p>
-  <%= link_to "followings" , followers_user_path %> |
-  <%= link_to "followers" , followings_user_path %>
+  <%= link_to gravatar_for(current_user, size: 150), current_user %>
+  <br>
+  <%= link_to "followers" , followers_user_path %> |
+  <%= link_to "followings" , followings_user_path %>
   </p>
 
 </div>
